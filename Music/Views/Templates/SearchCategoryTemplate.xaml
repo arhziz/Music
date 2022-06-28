@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Music.Views.Templates.SearchCategoryTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Frame
+        Margin="5"
+        Padding="0"
+        BackgroundColor="Transparent"
+        CornerRadius="10"
+        HasShadow="False"
+        HeightRequest="130"
+        IsClippedToBounds="True">
+        <Grid>
+
+            <Image
+                x:Name="templateImage"
+                Aspect="AspectFill"
+                HeightRequest="130"
+                Source="{Binding Image}" />
+
+            <!--<BoxView BackgroundColor="Orange" Opacity="0.5" />-->
+
+            <Label
+                x:Name="titleLabel"
+                Margin="5"
+                FontFamily="MontserratSemiBold"
+                FontSize="15"
+                Text="{Binding Title}"
+                VerticalOptions="End" />
+        </Grid>
+
+    </Frame>
+</ContentView>

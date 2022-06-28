@@ -1,0 +1,16 @@
+﻿global using System;
+global using Music.Views;
+global using Music.ViewModels;
+global using Music.Model;
+global using CommunityToolkit.Maui;
+global using CommunityToolkit.Maui.Markup;
+global using CommunityToolkit.Mvvm.ComponentModel;
+global using Microsoft.Maui.Handlers;
+global using Microsoft.Maui.Platform;
+global using Music.Helpers.Interfaces;
+global using Microsoft.Maui.Devices;
+global using Music.Model.ModelTemplates;
+global using Music.Helpers;
+global using System.Collections.ObjectModel;
+global using CommunityToolkit.Mvvm.Input;
+global using ContentView = Microsoft.Maui.Controls.ContentView;

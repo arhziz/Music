@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Music.Views.SearchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Music.Helpers.Controls"
+    xmlns:helpers="clr-namespace:Music.Helpers"
+    xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:model="clr-namespace:Music.Model"
+    xmlns:templates="clr-namespace:Music.Views.Templates"
+    xmlns:vm="clr-namespace:Music.ViewModels"
+    x:DataType="vm:SearchPageViewModel"
+    Shell.NavBarIsVisible="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:InvertedBoolConverter x:Key="InverseToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid
+        x:Name="MainGrid"
+        RowDefinitions="50,*,Auto"
+        RowSpacing="0">
+        <Frame
+            Padding="10,0"
+            BackgroundColor="{AppThemeBinding Dark=Black,
+                                              Light=White}"
+            BorderColor="Transparent"
+            CornerRadius="0"
+            HasShadow="False">
+            <Grid ColumnDefinitions="*,Auto">
+                <Label
+                    x:Name="titleLabel"
+                    Margin="2,0"
+                    FontFamily="MontserratMedium"
+                    FontSize="18"
+                    Opacity="0"
+                    Text="Search"
+                    VerticalOptions="Center" />
+
+                <ImageButton Grid.Column="1">
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="MDI"
+                            Glyph="{x:Static helpers:IconFont.DotsVertical}"
+                            Size="20"
+                            Color="{StaticResource Primary}" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Grid>
+        </Frame>
+
+        <ScrollView
+            x:Name="theScroll"
+            Grid.Row="1"
+            Padding="12"
+            IsVisible="{Binding IsNotBusy}"
+            Scrolled="ScrollView_Scrolled"
+            VerticalOptions="CenterAndExpand">
+            <StackLayout Spacing="10">
+                <Label
+                    x:Name="MainTitleLabel"
+                    FontFamily="MontserratBold"
+                    FontSize="32"
+                    Text="Search" />
+                <Frame
+                    Padding="15,7"
+                    BackgroundColor="{AppThemeBinding Dark={StaticResource Secondary},
+                                                      Light={StaticResource LightGray}}"
+                    BorderColor="Transparent"
+                    CornerRadius="2"
+                    HasShadow="False">
+
+                    <Entry
+                        x:Name="SearchEntry"
+                        FontFamily="MontserratMedium"
+                        FontSize="15"
+                        Placeholder="Artists, Songs, Lyrics and more"
+                        PlaceholderColor="#98999e"
+                        Text="{Binding SearchText}" />
+                </Frame>
+                <Label
+                    Margin="0,10,0,5"
+                    FontFamily="MontserratSemiBold"
+                    FontSize="17"
+                    Text="Browse Categories" />
+                <CollectionView ItemsSource="{Binding SearchCatList}" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <!--<CollectionView.ItemsSource>
+                            <x:Array Type="{x:Type model:SearchCategory}">
+                                <model:SearchCategory Title="Apple Music Live: Harry Styles" Image="harry" />
+                                <model:SearchCategory Title="Hits" Image="drake" />
+                                <model:SearchCategory Title="African" Image="wizkid" />
+                                <model:SearchCategory Title="Punk" Image="avril" />
+                                <model:SearchCategory Title="Hip-Hop" Image="lamar" />
+                                <model:SearchCategory Title="RNB" Image="abisha" />
+                                <model:SearchCategory Title="Pop" Image="other" />
+                                <model:SearchCategory Title="Punk" Image="avril" />
+                                <model:SearchCategory Title="Hip-Hop" Image="lamar" />
+                                <model:SearchCategory Title="RNB" Image="abisha" />
+                                <model:SearchCategory Title="Pop" Image="other" />
+                            </x:Array>
+                        </CollectionView.ItemsSource>-->
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:SearchCategory">
+                            <templates:SearchCategoryTemplate Title="{Binding Title}" ImageSrc="{Binding Image}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+        </ScrollView>
+        <ActivityIndicator
+            Grid.Row="1"
+            IsRunning="{Binding IsBusy}"
+            IsVisible="{Binding IsBusy}"
+            VerticalOptions="CenterAndExpand"
+            Color="{StaticResource Primary}" />
+        <Frame
+            x:Name="SearchEntryClone"
+            Grid.Row="1"
+            Padding="12,7"
+            BackgroundColor="{AppThemeBinding Dark=Black,
+                                              Light=White}"
+            BorderColor="{AppThemeBinding Dark=Black,
+                                          Light=White}"
+            CornerRadius="2"
+            HasShadow="False"
+            IsVisible="False"
+            VerticalOptions="Start">
+            <Frame
+                Padding="15,7"
+                BackgroundColor="{AppThemeBinding Dark={StaticResource Secondary},
+                                                  Light={StaticResource LightGray}}"
+                BorderColor="Transparent"
+                CornerRadius="2"
+                HasShadow="False">
+                <Entry
+                    FontFamily="MontserratMedium"
+                    FontSize="15"
+                    Placeholder="Artists, Songs, Lyrics and more"
+                    PlaceholderColor="#98999e"
+                    Text="{Binding SearchText}" />
+            </Frame>
+
+        </Frame>
+        <!--  Bottom Nav  -->
+        <!--<Frame
+            Grid.Row="2"
+            Padding="0"
+            BackgroundColor="{StaticResource Secondary}"
+            BorderColor="{StaticResource Secondary}"
+            CornerRadius="0"
+            HeightRequest="58">
+            <mct:UniformItemsLayout
+                MaxColumns="5"
+                MaxRows="1"
+                VerticalOptions="Center">
+                <controls:NavButton NavIcon="{x:Static helpers:IcoMoon.PlayCircle}" NavText="Listen Now">
+                    <controls:NavButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToListenNowPageCommand}" />
+                    </controls:NavButton.GestureRecognizers>
+                </controls:NavButton>
+                <controls:NavButton NavIcon="{x:Static helpers:IcoMoon.Grid}" NavText="Browse">
+                    <controls:NavButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToBrowsePageCommand}" />
+                    </controls:NavButton.GestureRecognizers>
+                </controls:NavButton>
+                <controls:NavButton
+                    IconSize="28"
+                    NavIcon="{x:Static helpers:IcoMoon.Radio}"
+                    NavText="Radio">
+                    <controls:NavButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToRadioPageCommand}" />
+                    </controls:NavButton.GestureRecognizers>
+                </controls:NavButton>
+                <controls:NavButton NavIcon="{x:Static helpers:IcoMoon.Folders}" NavText="Library">
+                    <controls:NavButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToLibraryPageCommand}" />
+                    </controls:NavButton.GestureRecognizers>
+                </controls:NavButton>
+                <controls:NavButton
+                    IsActive="True"
+                    NavIcon="{x:Static helpers:IcoMoon.Search}"
+                    NavText="Search">
+                    <controls:NavButton.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToSearchPageCommand}" />
+                    </controls:NavButton.GestureRecognizers>
+                </controls:NavButton>
+            </mct:UniformItemsLayout>
+        </Frame>-->
+        <!--  Nav Ends  -->
+    </Grid>
+    <!--    -->
+
+</ContentPage>
