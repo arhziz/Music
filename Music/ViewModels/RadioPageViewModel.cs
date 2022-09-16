@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Music.ViewModels
 {
-    public partial class RadioPageViewModel : BaseViewModel
+    public partial class RadioPageViewModel : Music.BaseLib.Base.BaseViewModel
     {
         #region Constructor
         public RadioPageViewModel(INavigationService navigationService):base(navigationService)

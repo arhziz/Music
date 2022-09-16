@@ -134,52 +134,7 @@
             </Frame>
 
         </Frame>
-        <!--  Bottom Nav  -->
-        <!--<Frame
-            Grid.Row="2"
-            Padding="0"
-            BackgroundColor="{StaticResource Secondary}"
-            BorderColor="{StaticResource Secondary}"
-            CornerRadius="0"
-            HeightRequest="58">
-            <mct:UniformItemsLayout
-                MaxColumns="5"
-                MaxRows="1"
-                VerticalOptions="Center">
-                <controls:NavButton NavIcon="{x:Static helpers:IcoMoon.PlayCircle}" NavText="Listen Now">
-                    <controls:NavButton.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToListenNowPageCommand}" />
-                    </controls:NavButton.GestureRecognizers>
-                </controls:NavButton>
-                <controls:NavButton NavIcon="{x:Static helpers:IcoMoon.Grid}" NavText="Browse">
-                    <controls:NavButton.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToBrowsePageCommand}" />
-                    </controls:NavButton.GestureRecognizers>
-                </controls:NavButton>
-                <controls:NavButton
-                    IconSize="28"
-                    NavIcon="{x:Static helpers:IcoMoon.Radio}"
-                    NavText="Radio">
-                    <controls:NavButton.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToRadioPageCommand}" />
-                    </controls:NavButton.GestureRecognizers>
-                </controls:NavButton>
-                <controls:NavButton NavIcon="{x:Static helpers:IcoMoon.Folders}" NavText="Library">
-                    <controls:NavButton.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToLibraryPageCommand}" />
-                    </controls:NavButton.GestureRecognizers>
-                </controls:NavButton>
-                <controls:NavButton
-                    IsActive="True"
-                    NavIcon="{x:Static helpers:IcoMoon.Search}"
-                    NavText="Search">
-                    <controls:NavButton.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GoToSearchPageCommand}" />
-                    </controls:NavButton.GestureRecognizers>
-                </controls:NavButton>
-            </mct:UniformItemsLayout>
-        </Frame>-->
-        <!--  Nav Ends  -->
+       
     </Grid>
     <!--    -->
 

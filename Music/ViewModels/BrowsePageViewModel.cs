@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Music.ViewModels
 {
-    public partial class BrowsePageViewModel : BaseViewModel
+    public partial class BrowsePageViewModel : Music.BaseLib.Base.BaseViewModel
     {
         #region Constructor
         public BrowsePageViewModel(INavigationService navigationService):base(navigationService)

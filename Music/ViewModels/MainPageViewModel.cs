@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Music.ViewModels;
 
-public class MainPageViewModel : BaseViewModel
+public class MainPageViewModel : Music.BaseLib.Base.BaseViewModel
 {
     #region Members
     

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Music.ViewModels
 {
-    public partial class LibraryPageViewModel : BaseViewModel
+    public partial class LibraryPageViewModel : Music.BaseLib.Base.BaseViewModel
     {
         #region Members
         [ObservableProperty]

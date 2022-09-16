@@ -28,7 +28,7 @@ public static class MauiProgram
                     c.RegisterForNavigation<LibraryPage, LibraryPageViewModel>();
                     c.RegisterForNavigation<BrowsePage, BrowsePageViewModel>();
                     c.RegisterForNavigation<RadioPage, RadioPageViewModel>();
-                    c.RegisterForNavigation<MainTabbedPage>();
+                    c.RegisterForNavigation<MainTabbedPage, MainTabbedPageViewModel>();
                     
                     //Register Library pages
                     c.RegisterPagesLibrary();

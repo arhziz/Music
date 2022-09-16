@@ -2,7 +2,7 @@
 
 namespace Music.ViewModels
 {
-    public partial class SearchPageViewModel : BaseViewModel
+    public partial class SearchPageViewModel : Music.BaseLib.Base.BaseViewModel
     {
         #region Members
         private readonly INavBarService androidNavBarService;
@@ -16,17 +16,26 @@ namespace Music.ViewModels
         #endregion
 
         #region Constructor
-        public SearchPageViewModel(INavBarService androidNavBarService, INavigationService navigationService): base(navigationService)
+#if ANDROID
+        public SearchPageViewModel(INavBarService androidNavBarService,INavigationService navigationService): base(navigationService)
         {
             this.androidNavBarService = androidNavBarService;
         }
-        #endregion
+#endif
+#if IOS
+        public SearchPageViewModel(INavigationService navigationService): base(navigationService)
+        {
+            
+        }
+#endif
+#endregion
 
-        #region Methods
+#region Methods
 
         public async override Task InitializeAsync(INavigationParameters parameters)
         {
-            
+            //InitializeData();
+
         }
 
         protected override async void RaiseIsActiveChanged()
@@ -76,7 +85,10 @@ namespace Music.ViewModels
                 var searchcats = LocalSearchCatList.OrderBy(x => rnd.Next());
                 if (searchcats != null)
                 {
-                    SearchCatList = new ObservableCollection<SearchCategory>(searchcats);
+                    foreach(var cats in searchcats)
+                    {
+                        SearchCatList.Add(cats);
+                    }
                 }
             }
             catch (Exception ex)
@@ -86,9 +98,9 @@ namespace Music.ViewModels
 
         }
 
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
         List<SearchCategory> LocalSearchCatList = new List<SearchCategory>
         {
             new SearchCategory
@@ -163,7 +175,7 @@ namespace Music.ViewModels
             },
 
         };
-        #endregion
+#endregion
 
     }
 }

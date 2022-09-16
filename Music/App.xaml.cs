@@ -8,6 +8,10 @@ public partial class App
 	{
 		InitializeComponent();
 
+#if IOS
 		//MainPage = new MainTabbedPage();
-	}
+#endif
+
+        //
+    }
 }

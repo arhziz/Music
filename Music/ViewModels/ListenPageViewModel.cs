@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Music.ViewModels
 {
-    public partial class ListenPageViewModel : BaseViewModel
+    public partial class ListenPageViewModel : Music.BaseLib.Base.BaseViewModel
     {
         #region Members
 
@@ -15,14 +15,23 @@ namespace Music.ViewModels
         #endregion
 
         #region Constructor
-                public ListenPageViewModel(INavBarService androidNavBarService, INavigationService navigationService):base(navigationService)
-                {
-                    this.androidNavBarService = androidNavBarService;
-                }
+                
+#if ANDROID
+        public ListenPageViewModel(INavBarService androidNavBarService, INavigationService navigationService) : base(navigationService)
+        {
+            this.androidNavBarService = androidNavBarService;
+        }
+#endif
+#if IOS
+        public ListenPageViewModel(INavigationService navigationService): base(navigationService)
+        {
+            
+        }
+#endif
         #endregion
 
         #region Methods
-                public async Task Initialize()
+        public async Task Initialize()
                 {
                     PageStatusColor = Color.FromHex("#1c1c1e");
                     PageBavBarSeparatorColor = Color.FromHex("#1c1c1e");
