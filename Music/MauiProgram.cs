@@ -1,9 +1,11 @@
 ﻿using Music.Helpers.Interfaces;
+using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Markup;
 using Prism;
-using Prism.Ioc;
+using Music.Library;
 
 #if ANDROID
-    using static Music.MainActivity;
+using static Music.MainActivity;
 #endif
 
 
@@ -12,48 +14,65 @@ public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
 	{
+        MauiAppBuilder builder = MauiApp.CreateBuilder()
+            .UseMauiApp<App>()
+            .UseMauiCommunityToolkit().UseMauiCommunityToolkitMarkup()
 
+            .UsePrism(prism =>
+                prism.RegisterTypes(c =>
+                {
+                    PlatformInitializer.RegisterTypes(c);
+                    c.RegisterForNavigation<NavigationPage>();
+                    c.RegisterForNavigation<SearchPage, SearchPageViewModel>();
+                    c.RegisterForNavigation<ListenPage, ListenPageViewModel>();
+                    c.RegisterForNavigation<LibraryPage, LibraryPageViewModel>();
+                    c.RegisterForNavigation<BrowsePage, BrowsePageViewModel>();
+                    c.RegisterForNavigation<RadioPage, RadioPageViewModel>();
+                    c.RegisterForNavigation<MainTabbedPage>();
+                    
+                    //Register Library pages
+                    c.RegisterPagesLibrary();
 
-        var builder = MauiApp.CreateBuilder()
-            .UsePrismApp<App>(prism =>
-            prism.RegisterTypes(c =>
-            {
-                c.RegisterForNavigation<SearchPage, SearchPageViewModel>();
-                c.RegisterForNavigation<ListenPage, ListenPageViewModel>();
-                c.RegisterForNavigation<LibraryPage, LibraryPageViewModel>();
-                c.RegisterForNavigation<BrowsePage, BrowsePageViewModel>();
-                c.RegisterForNavigation<RadioPage, RadioPageViewModel>();
-                c.RegisterForNavigation<MainTabbedPage>();
-
-            })
-            .OnAppStart(nameof(MainTabbedPage)))
-            .UseMauiCommunityToolkit()
-            .UseMauiCommunityToolkitMarkup()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                fonts.AddFont("materialdesignicons-webfont.ttf", "MDI");
-                fonts.AddFont("Montserrat-Black.ttf", "MontserratBlack");
-                fonts.AddFont("Montserrat-Bold.ttf", "MontserratBold");
-                fonts.AddFont("Montserrat-ExtraBold.ttf", "MontserratExtraBold");
-                fonts.AddFont("Montserrat-Light.ttf", "MontserratLight");
-                fonts.AddFont("Montserrat-Medium.ttf", "MontserratMedium");
-                fonts.AddFont("Montserrat-Regular.ttf", "MontserratRegular");
-                fonts.AddFont("Montserrat-SemiBold.ttf", "MontserratSemiBold");
-                fonts.AddFont("Montserrat-Thin.ttf", "MontserratThin");
-                fonts.AddFont("icomoon.ttf", "ICO");
-            });
-
-        //Register Services
-        builder.Services.AddSingleton<IEntry>(new Entry());
+                    //Register Services
+                    //c.RegisterSingleton<IEntry>();
 
 #if ANDROID
-        builder.Services.AddSingleton<INavBarService,NavBarService>();
+                    c.RegisterSingleton<INavBarService, NavBarService>();
 #endif
 
-        //builder.Services.AddSingleton<IWindow>();
+                })
+
+                    .OnAppStart(async (container, navigationService) =>
+                    {
+                        var result = await navigationService.NavigateAsync($"{nameof(MainTabbedPage)}?selectedTab=NavigationPage|{nameof(LibraryPage)}");
+                        if (!result.Success)
+                        {
+                            // use the container to resolve a logger
+                            var t = 1;
+                        }
+                    }))
+
+                     .ConfigureFonts(fonts =>
+                     {
+                         fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                         fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                         fonts.AddFont("materialdesignicons-webfont.ttf", "MDI");
+                         fonts.AddFont("Montserrat-Black.ttf", "MontserratBlack");
+                         fonts.AddFont("Montserrat-Bold.ttf", "MontserratBold");
+                         fonts.AddFont("Montserrat-ExtraBold.ttf", "MontserratExtraBold");
+                         fonts.AddFont("Montserrat-Light.ttf", "MontserratLight");
+                         fonts.AddFont("Montserrat-Medium.ttf", "MontserratMedium");
+                         fonts.AddFont("Montserrat-Regular.ttf", "MontserratRegular");
+                         fonts.AddFont("Montserrat-SemiBold.ttf", "MontserratSemiBold");
+                         fonts.AddFont("Montserrat-Thin.ttf", "MontserratThin");
+                         fonts.AddFont("icomoon.ttf", "ICO");
+                     });
+
+        builder.Services.AddSingleton<IShare>(Share.Default);
+
+        //builder.Services.AddRefitClient<ISecurityApi>()
+        //   .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.github.com"));
 
         return builder.Build();
-	}
+    }
 }

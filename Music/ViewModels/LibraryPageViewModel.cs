@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Music.Library.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 
 namespace Music.ViewModels
 {
@@ -19,18 +20,34 @@ namespace Music.ViewModels
         [ObservableProperty]
         double albumWidth;
 
-        [ObservableProperty]
+        
         LibraryItems selectedItem;
 
+        public LibraryItems SelectedItem
+        {
+            get => selectedItem;
+            set
+            {
+                SetProperty(ref selectedItem, value);
+                if(selectedItem != null)
+                {
+                    OpenLibraryItem(selectedItem);
+
+                }
+            }
+        }
 
 
+        private readonly INavigationService navigationService;
         #endregion
 
         #region Constructor
         public LibraryPageViewModel(INavigationService navigationService):base(navigationService)
         {
             Title = "Library";
-            
+            this.navigationService = navigationService;
+
+
         }
         #endregion
 
@@ -67,7 +84,7 @@ namespace Music.ViewModels
                 }
 
                 //Recently Added
-                var added = localRecentlyAdded.OrderBy(x => rnd.Next());
+                var added =  localRecentlyAdded.OrderBy(x => rnd.Next());
                 if(added != null)
                 {
                     if(RecentlyAdded != null)
@@ -86,11 +103,17 @@ namespace Music.ViewModels
         #endregion
 
         #region ICommands
-        [ICommand]
-        async Task LibraryItemClick(object item)
+        public ICommand LibraryItemClickedCommand => new DelegateCommand<LibraryItems>(OpenLibraryItem);
+
+        private async void OpenLibraryItem(LibraryItems obj)
         {
+            //throw new NotImplementedException();
+            SelectedItem = null;
+            if (obj.PageString != null)
+                await navigationService.NavigateAsync(obj.PageString);
 
         }
+
         #endregion
 
         #region Properties
@@ -99,27 +122,32 @@ namespace Music.ViewModels
             new LibraryItems
             {
                 Title = "Playlists",
-                Icon = IconFont.PlaylistMusic
+                Icon = IconFont.PlaylistMusic,
+                PageString = nameof(PlaylistsPage)
             },
             new LibraryItems
             {
                 Title = "Artists",
-                Icon = IconFont.MicrophoneVariant
+                Icon = IconFont.MicrophoneVariant,
+                PageString = nameof(PlaylistsPage)
             },
             new LibraryItems
             {
                 Title = "Albums",
-                Icon = IconFont.Album
+                Icon = IconFont.Album,
+                PageString = nameof(AlbumsPage)
             },
             new LibraryItems
             {
                 Title = "Songs",
-                Icon = IconFont.MusicNote
+                Icon = IconFont.MusicNote,
+                PageString = nameof(SongsPage)
             },
             new LibraryItems
             {
                 Title = "Downloaded",
-                Icon = IconFont.ArrowDownCircleOutline
+                Icon = IconFont.ArrowDownCircleOutline,
+                PageString = nameof(DownloadedPage)
             },
             new LibraryItems
             {

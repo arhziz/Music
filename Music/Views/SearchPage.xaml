@@ -7,9 +7,12 @@
     xmlns:helpers="clr-namespace:Music.Helpers"
     xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:model="clr-namespace:Music.Model"
+    xmlns:mvvm="http://prismlibrary.com"
     xmlns:templates="clr-namespace:Music.Views.Templates"
     xmlns:vm="clr-namespace:Music.ViewModels"
+    mvvm:ViewModelLocator.AutowireViewModel="Automatic"
     x:DataType="vm:SearchPageViewModel"
+    NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -87,21 +90,7 @@
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" />
                     </CollectionView.ItemsLayout>
-                    <!--<CollectionView.ItemsSource>
-                            <x:Array Type="{x:Type model:SearchCategory}">
-                                <model:SearchCategory Title="Apple Music Live: Harry Styles" Image="harry" />
-                                <model:SearchCategory Title="Hits" Image="drake" />
-                                <model:SearchCategory Title="African" Image="wizkid" />
-                                <model:SearchCategory Title="Punk" Image="avril" />
-                                <model:SearchCategory Title="Hip-Hop" Image="lamar" />
-                                <model:SearchCategory Title="RNB" Image="abisha" />
-                                <model:SearchCategory Title="Pop" Image="other" />
-                                <model:SearchCategory Title="Punk" Image="avril" />
-                                <model:SearchCategory Title="Hip-Hop" Image="lamar" />
-                                <model:SearchCategory Title="RNB" Image="abisha" />
-                                <model:SearchCategory Title="Pop" Image="other" />
-                            </x:Array>
-                        </CollectionView.ItemsSource>-->
+
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:SearchCategory">
                             <templates:SearchCategoryTemplate Title="{Binding Title}" ImageSrc="{Binding Image}" />

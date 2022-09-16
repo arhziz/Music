@@ -1,9 +1,10 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Prism.Navigation;
 using System.ComponentModel;
 
 
-namespace Music.ViewModels;
+namespace Music.BaseLib.Base;
 
 public partial class BaseViewModel : ObservableObject, INotifyPropertyChanged, IInitialize, IInitializeAsync, INavigationAware, INavigatedAware, IActiveAware, IPageLifecycleAware
 {
@@ -32,8 +33,8 @@ public partial class BaseViewModel : ObservableObject, INotifyPropertyChanged, I
     public bool IsActive
     {
         get { return _isActive; }
-        set 
-        { 
+        set
+        {
             SetProperty(ref _isActive, value);
             RaiseIsActiveChanged();
         }
@@ -54,20 +55,20 @@ public partial class BaseViewModel : ObservableObject, INotifyPropertyChanged, I
     #endregion
 
     #region ICommands
-    [RelayCommand]
-    async Task GoToListenNowPage() => await NavigationService.NavigateAsync(nameof(ListenPage));
+    //[RelayCommand]
+    //async Task GoToListenNowPage() => await NavigationService.NavigateAsync(nameof(ListenPage));
 
-    [RelayCommand]
-    async Task GoToLibraryPage() => await NavigationService.NavigateAsync(nameof(LibraryPage));
+    //[RelayCommand]
+    //async Task GoToLibraryPage() => await NavigationService.NavigateAsync(nameof(LibraryPage));
 
-    [RelayCommand]
-    async Task GoToBrowsePage() => await NavigationService.NavigateAsync(nameof(BrowsePage));
+    //[RelayCommand]
+    //async Task GoToBrowsePage() => await NavigationService.NavigateAsync(nameof(BrowsePage));
 
-    [RelayCommand]
-    async Task GoToRadioPage() => await NavigationService.NavigateAsync(nameof(RadioPage));
+    //[RelayCommand]
+    //async Task GoToRadioPage() => await NavigationService.NavigateAsync(nameof(RadioPage));
 
-    [RelayCommand]
-    async Task GoToSearchPage() => await NavigationService.NavigateAsync(nameof(SearchPage));
+    //[RelayCommand]
+    //async Task GoToSearchPage() => await NavigationService.NavigateAsync(nameof(SearchPage));
 
     public virtual void Initialize(INavigationParameters parameters)
     {

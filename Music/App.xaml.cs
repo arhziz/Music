@@ -1,6 +1,6 @@
 ﻿namespace Music;
 
-public partial class App : PrismApplication
+public partial class App
 {
 
 	
@@ -8,6 +8,6 @@ public partial class App : PrismApplication
 	{
 		InitializeComponent();
 
-		MainPage = new MainTabbedPage();
+		//MainPage = new MainTabbedPage();
 	}
 }

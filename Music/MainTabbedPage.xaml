@@ -4,22 +4,78 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:helper="clr-namespace:Music.Helpers"
     xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:mvvm="http://prismlibrary.com"
     xmlns:views="clr-namespace:Music.Views"
+    android:TabbedPage.IsSmoothScrollEnabled="False"
     android:TabbedPage.IsSwipePagingEnabled="False"
+    android:TabbedPage.OffscreenPageLimit="5"
     android:TabbedPage.ToolbarPlacement="Bottom"
-    BarBackgroundColor="{StaticResource Secondary}">
-    <views:LibraryPage Title="Library">
+    mvvm:ViewModelLocator.AutowireViewModel="Automatic"
+    BarBackgroundColor="{StaticResource Secondary}"
+    SelectedTabColor="#f92d48"
+    UnselectedTabColor="#FFF">
+    <TabbedPage.SelectedItem>
+        <views:LibraryPage />
+    </TabbedPage.SelectedItem>
+
+    <!--<views:LibraryPage Title="Library">
         <views:LibraryPage.Behaviors>
-            <!--<mct:EventToCommandBehavior EventName="OnNavigatedTo" Command="">
+    -->
+    <!--<mct:EventToCommandBehavior EventName="OnNavigatedTo" Command="">
 
             </mct:EventToCommandBehavior>-->
+    <!--
         </views:LibraryPage.Behaviors>
-    </views:LibraryPage>
-    <views:ListenPage Title="Listen Now" />
+    </views:LibraryPage>-->
+    <!--<views:ListenPage Title="Listen Now" />
     <views:BrowsePage Title="Browse" />
-    <views:RadioPage Title="Radio" />
 
-    <views:SearchPage Title="Search" />
+    <views:RadioPage Title="Radio" />-->
+    <NavigationPage Title="Listen Now">
+        <x:Arguments>
+            <views:ListenPage />
+        </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.PlayCircle}" />
+        </NavigationPage.IconImageSource>
+    </NavigationPage>
+    <NavigationPage Title="Browse">
+        <x:Arguments>
+            <views:BrowsePage />
+        </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Grid}" />
+        </NavigationPage.IconImageSource>
+    </NavigationPage>
+    <NavigationPage Title="Radio">
+        <x:Arguments>
+            <views:RadioPage />
+        </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource
+                FontFamily="ICO"
+                Glyph="{x:Static helper:IcoMoon.Radio}"
+                Size="30" />
+        </NavigationPage.IconImageSource>
+    </NavigationPage>
+    <NavigationPage Title="Library">
+        <x:Arguments>
+            <views:LibraryPage />
+        </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Folders}" />
+        </NavigationPage.IconImageSource>
+    </NavigationPage>
+    <NavigationPage Title="Search">
+        <x:Arguments>
+            <views:SearchPage />
+        </x:Arguments>
+        <NavigationPage.IconImageSource>
+            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Search}" />
+        </NavigationPage.IconImageSource>
+    </NavigationPage>
+
 
 </TabbedPage>

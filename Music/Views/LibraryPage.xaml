@@ -8,11 +8,14 @@
     xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:model="clr-namespace:Music.Model"
     xmlns:modeltemplates="clr-namespace:Music.Model.ModelTemplates"
+    xmlns:mvvm="http://prismlibrary.com"
     xmlns:templates="clr-namespace:Music.Views.Templates"
     xmlns:vm="clr-namespace:Music.ViewModels"
     x:Name="Root"
     Title="LibraryPage"
+    mvvm:ViewModelLocator.AutowireViewModel="Automatic"
     x:DataType="vm:LibraryPageViewModel"
+    NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
 
     <ContentPage.Resources>
@@ -81,9 +84,9 @@
                 <ListView
                     x:Name="TheListView"
                     Margin="12"
-                    ItemTapped="ListView_ItemTapped"
                     ItemsSource="{Binding Libraries}"
                     RowHeight="50"
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                     SelectionMode="Single">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="modeltemplates:LibraryItems">
@@ -101,7 +104,9 @@
                                         FontSize="20"
                                         Text="{Binding Title}"
                                         VerticalOptions="Center" />
-
+                                    <!--<Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.LibraryItemClickedCommand, Source={x:Reference Root}}" CommandParameter="{Binding .}" />
+                                    </Grid.GestureRecognizers>-->
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

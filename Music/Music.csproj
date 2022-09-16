@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+		<!--<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>-->
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -51,10 +51,12 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.DryIoc.Maui" Version="8.1.191-beta" />
-    <PackageReference Include="Prism.Maui" Version="8.1.191-beta" />
-    <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
-    <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.0" />
+   
+    <PackageReference Include="Prism.DryIoc.Maui" Version="8.1.273-pre" />
+    <PackageReference Include="Prism.Maui" Version="8.1.273-pre" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
+    <PackageReference Include="CommunityToolkit.Maui.Markup" Version="1.0.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
   </ItemGroup>
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\icomoon.ttf" />
@@ -153,14 +155,19 @@
 	  <MauiImage Include="Resources\Images\Arts\Taylor Swift\red.png" Resize="false" />
 	</ItemGroup>
 
+	
+
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-	  <PackageReference Include="PropertyChanged.Fody" Version="3.4.1" />
+	  <ProjectReference Include="..\Music.BaseLib\Music.BaseLib.csproj" />
+	  <ProjectReference Include="..\Music.Library\Music.Library.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="MainTabbedPage.xaml.cs">
 	    <DependentUpon>MainTabbedPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Platforms\iOS\PlatformInitializer.cs">
+	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
 	  </Compile>
 	</ItemGroup>
 

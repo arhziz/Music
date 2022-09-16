@@ -5,6 +5,12 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Music", "Music\Music.csproj", "{9492C88A-D800-4DB7-AC38-A2D63D673EEC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pages", "Pages", "{AA65C7B8-B5A2-4700-A47B-D8B7D552E178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music.Library", "Music.Library\Music.Library.csproj", "{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music.BaseLib", "Music.BaseLib\Music.BaseLib.csproj", "{FD867917-6405-443B-B9F2-0AE35F8C5B44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +23,23 @@ Global
 		{9492C88A-D800-4DB7-AC38-A2D63D673EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9492C88A-D800-4DB7-AC38-A2D63D673EEC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9492C88A-D800-4DB7-AC38-A2D63D673EEC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{FD867917-6405-443B-B9F2-0AE35F8C5B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD867917-6405-443B-B9F2-0AE35F8C5B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD867917-6405-443B-B9F2-0AE35F8C5B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD867917-6405-443B-B9F2-0AE35F8C5B44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD867917-6405-443B-B9F2-0AE35F8C5B44}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7F250D08-1E2D-4DBC-90D5-B51CEEAFCCF6} = {AA65C7B8-B5A2-4700-A47B-D8B7D552E178}
+		{FD867917-6405-443B-B9F2-0AE35F8C5B44} = {AA65C7B8-B5A2-4700-A47B-D8B7D552E178}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

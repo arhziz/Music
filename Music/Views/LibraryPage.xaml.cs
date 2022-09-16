@@ -88,20 +88,20 @@ public partial class LibraryPage : ContentPage
 
     
 
-    async void ListView_ItemTapped(System.Object sender, ItemTappedEventArgs e)
-    {
-        if((LibraryItems)((ListView)sender).SelectedItem != previouslySeletedItem)
-            previouslySeletedItem = (LibraryItems)((ListView)sender).SelectedItem;
+    //async void ListView_ItemTapped(System.Object sender, ItemTappedEventArgs e)
+    //{
+    //    if((LibraryItems)((ListView)sender).SelectedItem != previouslySeletedItem)
+    //        previouslySeletedItem = (LibraryItems)((ListView)sender).SelectedItem;
 
-        TheListView.SelectedItem = null;
+    //    TheListView.SelectedItem = null;
 
-        string route = previouslySeletedItem.Title + "Page";
-        await Shell.Current.GoToAsync(route);
+    //    string route = previouslySeletedItem.Title + "Page";
+    //    await Shell.Current.GoToAsync(route);
         
 
 
          
-    }
+    //}
 
     
     //void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
