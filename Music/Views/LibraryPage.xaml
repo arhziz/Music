@@ -60,9 +60,11 @@
         <ScrollView
             x:Name="theScroll"
             Grid.Row="1"
+            
             IsVisible="{Binding IsNotBusy}"
             Scrolled="ScrollView_Scrolled"
-            VerticalOptions="StartAndExpand">
+            
+            >
             <StackLayout Spacing="10">
                 <Grid Margin="12">
                     <Label
@@ -104,19 +106,91 @@
                                         FontSize="20"
                                         Text="{Binding Title}"
                                         VerticalOptions="Center" />
-                                    <!--<Grid.GestureRecognizers>
+                                    <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding Path=BindingContext.LibraryItemClickedCommand, Source={x:Reference Root}}" CommandParameter="{Binding .}" />
-                                    </Grid.GestureRecognizers>-->
+                                    </Grid.GestureRecognizers>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                <!--<StackLayout Margin="12" BindableLayout.ItemsSource="{Binding Libraries}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="modeltemplates:LibraryItems">
+                        
+                                <Grid HeightRequest="50" ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                    <Label
+                                        FontFamily="MDI"
+                                        FontSize="29"
+                                        Text="{Binding Icon}"
+                                        TextColor="{StaticResource Primary}"
+                                        VerticalOptions="Center" />
+                                    <Label
+                                        Grid.Column="1"
+                                        FontFamily="MontserratMedium"
+                                        FontSize="20"
+                                        Text="{Binding Title}"
+                                        VerticalOptions="Center" />
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.LibraryItemClickedCommand, Source={x:Reference Root}}" CommandParameter="{Binding .}" />
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                           
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+
+                </StackLayout>-->
+
                 <Label
                     Margin="12,5"
                     FontFamily="MontserratBold"
                     FontSize="19"
                     Text="Recently Added" />
+                <!--<FlexLayout
+                    Margin="6"
+                    
+                    AlignContent="Start"
+                    AlignItems="Start"
+                    BindableLayout.ItemsSource="{Binding RecentlyAdded}"
+                    Direction="Row"
+                    HeightRequest="300"
+                    JustifyContent="Start"
+                    Wrap="Wrap">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:Album">
+                            <Grid
+                                Margin="2,5"
+                                Padding="0"
+                                RowDefinitions="*,Auto"
+                                RowSpacing="5"
+                                WidthRequest="180">
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True"
+                                    HeightRequest="180"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="180">
+
+                                    <Image Aspect="AspectFill" Source="{Binding AlbumArt}" />
+                                </Frame>
+
+                                <VerticalStackLayout Grid.Row="1">
+                                    <Label
+                                        FontSize="16"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Title}" />
+                                    <Label
+                                        FontSize="14"
+                                        Text="{Binding Artist.Title}"
+                                        TextColor="{StaticResource MidGray}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>-->
                 <mct:UniformItemsLayout
                     Margin="6"
                     BindableLayout.ItemsSource="{Binding RecentlyAdded}"
