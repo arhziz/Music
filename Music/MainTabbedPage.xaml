@@ -15,9 +15,9 @@
     android:TabbedPage.ToolbarPlacement="Bottom"
     ios:TabbedPage.TranslucencyMode="Default"
     mvvm:ViewModelLocator.AutowireViewModel="Automatic"
-    BarBackgroundColor="{StaticResource Secondary}"
+    BarBackgroundColor="{AppThemeBinding Dark={StaticResource Secondary},Light=#FFFFFF}"
     SelectedTabColor="#f92d48"
-    UnselectedTabColor="#FFF">
+    UnselectedTabColor="{AppThemeBinding Dark=#EFEFEF, Light=#1C1C1C}">
     <TabbedPage.SelectedItem>
         <views:LibraryPage />
     </TabbedPage.SelectedItem>

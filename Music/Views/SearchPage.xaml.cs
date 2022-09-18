@@ -29,7 +29,7 @@ public partial class SearchPage : ContentPage
         ModifyEntry();
         
         
-        theLine.SetAppThemeColor(BackgroundColorProperty, Color.FromHex("#DFD8F7"), Color.FromHex("#1c1c1e"));
+        theLine.SetAppThemeColor(BackgroundColorProperty, Color.FromHex("#EFEFEF"), Color.FromHex("#1c1c1e"));
     }
 
     #endregion
@@ -41,7 +41,7 @@ public partial class SearchPage : ContentPage
         {
 #if ANDROID
             handler.PlatformView.SetBackgroundColor(Colors.Transparent.ToPlatform());
-#elif iOS
+#elif IOS
             handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #elif WINDOWS
             handler.PlatformView.FontWeight = Microsoft.UI.Text.FontWeights.Thin;

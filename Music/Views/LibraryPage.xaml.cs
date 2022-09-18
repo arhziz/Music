@@ -24,7 +24,7 @@ public partial class LibraryPage : ContentPage
         InitializeComponent();
         
 
-        theLine.SetAppThemeColor(BackgroundColorProperty, Color.FromHex("#DFD8F7"), Color.FromHex("#1c1c1e"));
+        theLine.SetAppThemeColor(BackgroundColorProperty, Color.FromHex("#EFEFEF"), Color.FromHex("#1c1c1e"));
     }
     #endregion
 
