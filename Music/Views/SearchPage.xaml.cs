@@ -1,3 +1,5 @@
+using Microsoft.Maui.ApplicationModel;
+
 namespace Music.Views;
 
 public partial class SearchPage : ContentPage
@@ -49,7 +51,47 @@ public partial class SearchPage : ContentPage
         });
     }
 
-    
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        AppTheme currentTheme = Application.Current.RequestedTheme;
+        if (currentTheme == AppTheme.Dark)
+        {
+            this.IconImageSource = new FontImageSource
+            {
+                Glyph = IcoMoon.Search,
+                FontFamily = "ICO",
+                Color = Color.FromHex("#EFEFEF")
+            };
+        }
+        else
+        {
+            this.IconImageSource = new FontImageSource
+            {
+                Glyph = IcoMoon.Search,
+                FontFamily = "ICO",
+                Color = Color.FromHex("#1C1C1C")
+            };
+        }
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if(MusicStaticProperties.CurrentTabbedPage == 4)
+        {
+            
+            
+                this.IconImageSource = new FontImageSource
+                {
+                    Glyph = IcoMoon.Search,
+                    FontFamily = "ICO",
+                    Color = Color.FromHex("#f92d48")
+                };
+            
+        }
+
+    }
+
 
     private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
     {

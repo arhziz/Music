@@ -39,7 +39,7 @@
 		<!--<MauiIcon Include="Resources\appicon.svg" />-->
 		
 		<MauiIcon Include="Resources\logocfg.svg">
-		  <Color>#f92d48</Color>
+		  <Color>#ffffff</Color>
 		  <BaseSize>128,128</BaseSize>
 		</MauiIcon>
 		<!-- Splash Screen -->
@@ -121,7 +121,7 @@
 	  <None Remove="Resources\Images\other.png" />
 	  <None Remove="Resources\Images\wizkid.png" />
 	  <None Remove="Resources\logo.svg" />
-	  <None Remove="Resources\logocfg.svg" />
+	  
 	</ItemGroup>
 	<!--<ItemGroup>
 	  <MauiAsset Include="Resources\Images\IconImage\albums.svg" />

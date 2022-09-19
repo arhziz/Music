@@ -17,6 +17,7 @@
     mvvm:ViewModelLocator.AutowireViewModel="Automatic"
     BarBackgroundColor="{AppThemeBinding Dark={StaticResource Secondary},Light=#FFFFFF}"
     SelectedTabColor="#f92d48"
+    CurrentPageChanged="TabbedPage_CurrentPageChanged"
     UnselectedTabColor="{AppThemeBinding Dark=#EFEFEF, Light=#1C1C1C}">
     <TabbedPage.SelectedItem>
         <views:LibraryPage />
@@ -40,15 +41,16 @@
             <views:ListenPage />
         </x:Arguments>
         <NavigationPage.IconImageSource>
-            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.PlayCircle}" />
+            <FontImageSource Color="{AppThemeBinding Dark=#FFF,Light=#000}" FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.PlayCircle}" />
         </NavigationPage.IconImageSource>
     </NavigationPage>
+    <!--<views:ListenPage  Title="Listen Now"/>-->
     <NavigationPage Title="Browse">
         <x:Arguments>
             <views:BrowsePage />
         </x:Arguments>
         <NavigationPage.IconImageSource>
-            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Grid}" />
+            <FontImageSource Color="{AppThemeBinding Dark=#FFF,Light=#000}" FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Grid}" />
         </NavigationPage.IconImageSource>
     </NavigationPage>
     <NavigationPage Title="Radio">
@@ -58,6 +60,7 @@
         <NavigationPage.IconImageSource>
             <FontImageSource
                 FontFamily="ICO"
+                Color="{AppThemeBinding Dark=#FFF,Light=#000}"
                 Glyph="{x:Static helper:IcoMoon.Radio}"
                 Size="30" />
         </NavigationPage.IconImageSource>
@@ -67,7 +70,7 @@
             <views:LibraryPage />
         </x:Arguments>
         <NavigationPage.IconImageSource>
-            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Folders}" />
+            <FontImageSource Color="{AppThemeBinding Dark=#FFF,Light=#000}" FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Folders}" />
         </NavigationPage.IconImageSource>
     </NavigationPage>
     <NavigationPage Title="Search">
@@ -75,7 +78,7 @@
             <views:SearchPage />
         </x:Arguments>
         <NavigationPage.IconImageSource>
-            <FontImageSource FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Search}" />
+            <FontImageSource Color="{AppThemeBinding Dark=#FFF,Light=#000}" FontFamily="ICO" Glyph="{x:Static helper:IcoMoon.Search}" />
         </NavigationPage.IconImageSource>
     </NavigationPage>
 

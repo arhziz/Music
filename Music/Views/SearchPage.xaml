@@ -88,7 +88,7 @@
                     FontFamily="MontserratSemiBold"
                     FontSize="17"
                     Text="Browse Categories" />
-                <CollectionView ItemsSource="{Binding SearchCatList}" SelectionMode="None">
+                <CollectionView VerticalOptions="Fill" ItemsSource="{Binding SearchCatList}" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" />
                     </CollectionView.ItemsLayout>

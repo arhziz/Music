@@ -4,7 +4,7 @@ public class MainTabbedPageViewModel
 {
 
 	
-	public MainTabbedPageViewModel(INavigationService navigationService)
+	public MainTabbedPageViewModel()
 	{
 		
 
