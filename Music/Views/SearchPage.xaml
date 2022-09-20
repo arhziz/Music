@@ -58,7 +58,7 @@
             Padding="12"
             IsVisible="{Binding IsNotBusy}"
             Scrolled="ScrollView_Scrolled"
-            VerticalOptions="CenterAndExpand">
+            >
             <StackLayout Spacing="10">
                 <Label
                     x:Name="MainTitleLabel"
@@ -66,17 +66,19 @@
                     FontSize="32"
                     Text="Search" />
                 <Frame
-                    Padding="15,7"
+                    Padding="{OnPlatform iOS='15,17', Android='15,7'}"
                     BackgroundColor="{AppThemeBinding Dark={StaticResource Secondary},
-                                                      Light={StaticResource LightGray}}"
+                                                      Light=#efefef}"
                     BorderColor="Transparent"
                     CornerRadius="2"
+                    VerticalOptions="Start"
                     HasShadow="False">
 
                     <Entry
                         x:Name="SearchEntry"
                         FontFamily="MontserratMedium"
                         FontSize="15"
+                        BackgroundColor="Transparent"
                         Placeholder="Artists, Songs, Lyrics and more"
                         PlaceholderColor="#98999e"
                         Text="{Binding SearchText}" />
@@ -86,7 +88,7 @@
                     FontFamily="MontserratSemiBold"
                     FontSize="17"
                     Text="Browse Categories" />
-                <CollectionView ItemsSource="{Binding SearchCatList}" SelectionMode="None">
+                <CollectionView VerticalOptions="Fill" ItemsSource="{Binding SearchCatList}" SelectionMode="None">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Orientation="Vertical" Span="2" />
                     </CollectionView.ItemsLayout>
@@ -119,7 +121,7 @@
             IsVisible="False"
             VerticalOptions="Start">
             <Frame
-                Padding="15,7"
+                Padding="{OnPlatform iOS='15,17', Android='15,7'}"
                 BackgroundColor="{AppThemeBinding Dark={StaticResource Secondary},
                                                   Light={StaticResource LightGray}}"
                 BorderColor="Transparent"

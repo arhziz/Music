@@ -13,7 +13,10 @@
     Title="ListenPage"
     ios:Page.UseSafeArea="True"
     x:DataType="vm:ListenPageViewModel"
+    NavigationPage.IconColor="#000"
     Shell.NavBarIsVisible="False">
+
+    
     <Grid RowDefinitions="*,Auto">
         <StackLayout Spacing="10">
             <Label

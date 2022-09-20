@@ -24,9 +24,59 @@ public partial class LibraryPage : ContentPage
         InitializeComponent();
         
 
-        theLine.SetAppThemeColor(BackgroundColorProperty, Color.FromHex("#DFD8F7"), Color.FromHex("#1c1c1e"));
+        theLine.SetAppThemeColor(BackgroundColorProperty, Color.FromHex("#EFEFEF"), Color.FromHex("#1c1c1e"));
     }
     #endregion
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+
+        //var statusBarColor = Color.FromRgb(BindingContext.RedSliderValue, BindingContext.GreenSliderValue, BindingContext.BlueSliderValue);
+        //CommunityToolkit.Maui.Core.Platform.StatusBar.SetColor(statusBarColor);
+    }
+
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        AppTheme currentTheme = Application.Current.RequestedTheme;
+        if (currentTheme == AppTheme.Dark)
+        {
+            this.IconImageSource = new FontImageSource
+            {
+                Glyph = IcoMoon.Folders,
+                FontFamily = "ICO",
+                Color = Color.FromHex("#EFEFEF")
+            };
+        }
+        else
+        {
+            this.IconImageSource = new FontImageSource
+            {
+                Glyph = IcoMoon.Folders,
+                FontFamily = "ICO",
+                Color = Color.FromHex("#1C1C1C")
+            };
+        }
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (MusicStaticProperties.CurrentTabbedPage == 3)
+        {
+
+
+            this.IconImageSource = new FontImageSource
+            {
+                Glyph = IcoMoon.Folders,
+                FontFamily = "ICO",
+                Color = Color.FromHex("#f92d48")
+            };
+
+        }
+
+    }
 
     #region Methods
     private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)

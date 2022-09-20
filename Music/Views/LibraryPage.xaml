@@ -10,6 +10,7 @@
     xmlns:modeltemplates="clr-namespace:Music.Model.ModelTemplates"
     xmlns:mvvm="http://prismlibrary.com"
     xmlns:templates="clr-namespace:Music.Views.Templates"
+    
     xmlns:vm="clr-namespace:Music.ViewModels"
     x:Name="Root"
     Title="LibraryPage"
@@ -17,7 +18,7 @@
     x:DataType="vm:LibraryPageViewModel"
     NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <mct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
@@ -149,15 +150,60 @@
                 <!--<FlexLayout
                     Margin="6"
                     
+                    Padding="1"
                     AlignContent="Start"
                     AlignItems="Start"
                     BindableLayout.ItemsSource="{Binding RecentlyAdded}"
                     Direction="Row"
-                    HeightRequest="300"
                     JustifyContent="Start"
-                    Wrap="Wrap">
+                    Wrap="Wrap"
+                    >
                     <BindableLayout.ItemTemplate>
                         <DataTemplate x:DataType="model:Album">
+                            <Grid
+                                Margin="2,5"
+                                Padding="0"
+                                RowDefinitions="*,Auto"
+                                RowSpacing="5"
+                                FlexLayout.AlignSelf="Start"
+                                FlexLayout.Basis="{OnIdiom Phone='50%',
+                                                           Tablet='33%'}"
+                                >
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    CornerRadius="5"
+                                    HasShadow="True"
+                                    HeightRequest="180"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="180">
+
+                                    <Image Aspect="AspectFill" Source="{Binding AlbumArt}" />
+                                </Frame>
+
+                                <VerticalStackLayout Grid.Row="1">
+                                    <Label
+                                        FontSize="16"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Title}" />
+                                    <Label
+                                        FontSize="14"
+                                        Text="{Binding Artist.Title}"
+                                        TextColor="{StaticResource MidGray}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>-->
+                <!--<CollectionView ItemsSource="{Binding RecentlyAdded}" SelectionMode="None">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Album">
+                           
                             <Grid
                                 Margin="2,5"
                                 Padding="0"
@@ -187,10 +233,10 @@
                                         TextColor="{StaticResource MidGray}" />
                                 </VerticalStackLayout>
                             </Grid>
+                        
                         </DataTemplate>
-
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>-->
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
                 <mct:UniformItemsLayout
                     Margin="6"
                     BindableLayout.ItemsSource="{Binding RecentlyAdded}"

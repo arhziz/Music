@@ -41,16 +41,18 @@ public static class MauiProgram
 #endif
 
                 })
+                .OnAppStart($"{nameof(MainTabbedPage)}?selectedTab=NavigationPage|{nameof(LibraryPage)}"))
 
-                    .OnAppStart(async (container, navigationService) =>
-                    {
-                        var result = await navigationService.NavigateAsync($"{nameof(MainTabbedPage)}?selectedTab=NavigationPage|{nameof(LibraryPage)}");
-                        if (!result.Success)
-                        {
-                            // use the container to resolve a logger
-                            var t = 1;
-                        }
-                    }))
+                    //.OnAppStart(async (container, navigationService) =>
+                    //{
+                    //    var result = await navigationService.NavigateAsync($"{nameof(MainTabbedPage)}?selectedTab=NavigationPage|{nameof(LibraryPage)}");
+                    //    if (!result.Success)
+                    //    {
+                    //        // use the container to resolve a logger
+                    //        var t = 1;
+                    //        Console.WriteLine(result.Exception);
+                    //    }
+                    //}))
 
                      .ConfigureFonts(fonts =>
                      {
