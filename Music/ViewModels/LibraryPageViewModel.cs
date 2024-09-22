@@ -21,7 +21,7 @@ namespace Music.ViewModels
         [ObservableProperty]
         double albumWidth;
 
-        
+
         LibraryItems selectedItem;
 
         public LibraryItems SelectedItem
@@ -30,7 +30,7 @@ namespace Music.ViewModels
             set
             {
                 SetProperty(ref selectedItem, value);
-                if(selectedItem != null)
+                if (selectedItem != null)
                 {
                     OpenLibraryItem(selectedItem);
 
@@ -75,11 +75,11 @@ namespace Music.ViewModels
         #endregion
 
         #region Constructor
-        public LibraryPageViewModel(INavigationService navigationService):base(navigationService)
+        public LibraryPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Library";
             this.navigationService = navigationService;
-           
+
 
         }
         #endregion
@@ -117,21 +117,21 @@ namespace Music.ViewModels
                 }
 
                 //Recently Added
-                var added =  localRecentlyAdded.OrderBy(x => rnd.Next());
-                if(added != null)
+                var added = localRecentlyAdded.OrderBy(x => rnd.Next());
+                if (added != null)
                 {
-                    if(RecentlyAdded != null)
+                    if (RecentlyAdded != null)
                         RecentlyAdded.Clear();
 
                     RecentlyAdded = new ObservableCollection<Album>(added);
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
-            
+
         }
         #endregion
 
@@ -162,7 +162,7 @@ namespace Music.ViewModels
             {
                 Title = "Artists",
                 Icon = IconFont.MicrophoneVariant,
-                PageString = nameof(PlaylistsPage)
+                PageString = nameof(ArtistsPage)
             },
             new LibraryItems
             {

@@ -6,8 +6,15 @@
     Title="Artists">
     <StackLayout>
         <Label
+            Margin="5,5"
             HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
+            Text="Welcome to the Artist Page"
+            VerticalOptions="Center"/>
+
+        <Label
+            Margin="5,5"
+            HorizontalOptions="Center"
+            Text="This page contains all the artist in the users library"
+            VerticalOptions="Center"/>
     </StackLayout>
 </ContentPage>
